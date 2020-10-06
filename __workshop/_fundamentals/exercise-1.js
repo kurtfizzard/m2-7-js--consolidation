@@ -1,6 +1,6 @@
 // Exercise 1
 //
-// Write a function will transform the inputData object into a new shape (As provided below.)
+// Write a function that will transform the inputData object into a new shape (As provided below.)
 
 const inputData = {
   name: "Will Byers",
@@ -81,7 +81,97 @@ const inputData = {
 // ⛔️ ['can-blink-lights', null]
 
 function transformData(data) {
-  // Your code here
+  // create a new address object with the required values
+  let addressObject = {
+    streetAddress: data.address1,
+    city: data.addressCity,
+    state: data.addressState,
+    country: data.addressCountry,
+  };
+  // create a superpowers array
+  let superpowersArray = [];
+  // if there is a super power, push it to the array
+  if (data.superpower1) {
+    superpowersArray.push(data.superpower1);
+  }
+  // if there is another super power, push it to the array
+  if (data.superpower2) {
+    superpowersArray.push(data.superpower2);
+  }
+  // create a relationships array
+  let relationshipsArray = [];
+  // check to see if there is a mother
+  if (data.motherName) {
+    // check to see if the mother has super powers
+    let motherSuperpowerArray = [];
+    // if the mother has a power, push it to the array
+    if (data.motherSuperpower1) {
+      motherSuperpowerArray.push(data.motherSuperpower1);
+    }
+    // if the mother has another power push it to the array
+    if (data.motherSuperpower2) {
+      motherSuperpowerArray.push(data.motherSuperpower2);
+    }
+    // push the mother object to the relationships array
+    relationshipsArray.push({
+      type: "mother",
+      name: data.motherName,
+      age: data.motherAge,
+      status: data.motherStatus,
+      superpowers: motherSuperpowerArray,
+    });
+  }
+  // check to see if there is a best friend
+  // if (data.bestFriendName) {
+  //   // check to see if the best friend has super powers
+  //   let bestFriendSuperpowerArray = [];
+  //   // if the best friend has a power, push it to the array
+  //   if (data.bestFriendSuperpower1) {
+  //     bestFriendSuperpowerArray.push(data.bestFriendSuperpower1);
+  //   }
+  //   // if the best friend has another power, push it to the array
+  //   if (data.bestFriendSuperpower2) {
+  //     bestFriendSuperpowerArray.push(data.bestFriendSuperpower2);
+  //   }
+  //   // push the best friend object to the relationships array
+  //   relationshipsArray.push({
+  //     type: "bestfriend",
+  //     name: data.bestFriendName,
+  //     age: data.bestFriendAge,
+  //     status: data.bestFriendStatus,
+  //     superpowers: bestFriendSuperpowerArray,
+  //   });
+  // }
+  // check to see if there is a girlfriend
+  if (data.girlfriendName) {
+    // check to see if the girlfriend has super powers
+    let girlfriendSuperpowerArray = [];
+    // if the girlfriend has a power, push it to the array
+    if (data.girlfriendSuperpower1) {
+      girlfriendSuperpowerArray.push(data.girlfriendSuperpower1);
+    }
+    // if the girlfriend has another power, push it to the array
+    if (data.girlfriendSuperpower2) {
+      girlfriendSuperpowerArray.push(data.girlfriendSuperpower2);
+    }
+    // push the girlfriend object to the relationships array
+    relationshipsArray.push({
+      type: "girlfriend",
+      name: data.girlfriendName,
+      age: data.girlfriendAge,
+      status: data.girlfriendStatus,
+      superpowers: girlfriendSuperpowerArray,
+    });
+  }
+  let newData = {
+    name: data.name,
+    age: data.age,
+    status: data.status,
+    address: addressObject,
+    superpowers: superpowersArray,
+    relationships: relationshipsArray,
+  };
+  return newData;
 }
 
 // Use a console.log to verify
